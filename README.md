@@ -5,3 +5,5 @@ Carnmoney Church is a vibrant fellowship of Christians based in Carnmoney, Newto
 Further updates will add more categories and support for videos; work is also ongoing to make the plugin work with any Podbean podcast, not just ours!
 
 www.carnmoney.org
+
+podcasts.carnmoney.org
