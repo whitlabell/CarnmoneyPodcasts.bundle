@@ -6,4 +6,4 @@ Further updates will add more categories and support for videos; work is also on
 
 www.carnmoney.org
 
-podcasts.carnmoney.org
+http://podcasts.carnmoney.org
