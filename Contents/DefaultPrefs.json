@@ -1,0 +1,32 @@
+[
+{
+"id": "title",
+"type": "text",
+"label": "Title",
+"default": "Carnmoney Podcasts"
+},
+{
+"id": "podcastUrl",
+"type": "text",
+"label": "Podcast URL",
+"default": "http://carnmoney.podbean.com/"
+},
+{
+"id": "icon",
+"type": "text",
+"label": "Icon",
+"default": "icon-default.png"
+},
+{
+"id": "background",
+"type": "text",
+"label": "Background",
+"default": "art-default.jpg"
+},
+{
+"id": "archiveIcon",
+"type": "text",
+"label": "Archive Icon",
+"default": "icon-archive.png"
+}
+]

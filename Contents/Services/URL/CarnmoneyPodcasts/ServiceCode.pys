@@ -1,0 +1,46 @@
+###########################################################
+# Plex URL Service to extract media from podbean posts
+# Originally written for Carnmoney Church
+# www.carnmoney.org
+# by Gary Bell.
+###########################################################
+ICON = 'icon-default.png'
+def MetadataObjectForURL(url):
+ 
+		# Request the URL
+		page = HTML.ElementFromURL(url)
+ 
+		# Extract the details available directly from the page.
+		title   = page.xpath('//div[@class="post"]/div[@class="middlebox"]/div[@class="posttitle"]/h2/a/text()')[0]
+		date    =  page.xpath('//div[@class="post"]/div[@class="datebox"]/div[@class="dateother"]/text()')[0]
+		genre   = page.xpath('//div[@class="post"]/div[@class="datebox"]/ul/li[2]/a/text()')[0]
+		summary = page.xpath('//div[@class="post"]/div[@class="middlebox"]/div[@class="entry"]/p/text()')[0]
+		thumb   = R(ICON)
+		
+		albumName = date[-4:] + " Podcasts" # Album name is prefixed with the year of publication
+		
+		return TrackObject(
+				title = title,
+				thumb = thumb,
+				#genre = genre,
+				album = albumName,
+				source_title = "Podbean",
+				summary = summary) 
+				
+def MediaObjectsForURL(url):
+		return [
+				MediaObject(
+						audio_codec = AudioCodec.MP3,
+						audio_channels = 2,
+						
+						container = 'flv',
+						parts = [PartObject(key=Callback(PlayVideo, url = url))]
+				)
+		]
+		
+def PlayVideo(url):
+	page = HTML.ElementFromURL(url)
+	mediaUrl = page.xpath('//div[@class="post"]//div[@class="middlebox"]/div[@class="entry"]/div[@class="podPress_content"]/div/div[@data-uri]/@data-uri')[0]
+	return Redirect(mediaUrl)
+	
+	
